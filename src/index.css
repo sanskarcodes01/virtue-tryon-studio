@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-bg: #F9F8F6;
+  --color-brand-text: #1A1A1A;
+  --color-brand-card: #F2F2F2;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text overflow-x-hidden antialiased;
+  }
+}
+
+@layer components {
+  .tracking-extrawide {
+    @apply tracking-[0.3em];
+  }
+}

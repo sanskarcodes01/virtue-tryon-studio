@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user profile information after Google OAuth login.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User's full name" },
+        "photoURL": { "type": "string", "description": "User profile picture URL" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Registration timestamp" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Product": {
+      "title": "Fashion Product",
+      "description": "A fashion item available for virtual try-on.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "imageUrl": { "type": "string", "description": "Main product image" },
+        "transparentImageUrl": { "type": "string", "description": "Transparent PNG for overlay" }
+      },
+      "required": ["id", "name", "imageUrl", "transparentImageUrl"]
+    },
+    "TryOnResult": {
+      "title": "Try-On Result",
+      "description": "Records of virtual try-on sessions for analytics.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "productId": { "type": "string" },
+        "modelImageUrl": { "type": "string" },
+        "resultImageUrl": { "type": "string" },
+        "deviceType": { "type": "string", "enum": ["Mobile", "Desktop"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "productId", "createdAt", "deviceType"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents."
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catalog of fashion items."
+    },
+    "/tryOnResults/{resultId}": {
+      "schema": "TryOnResult",
+      "description": "Analytics records for try-on volume."
+    }
+  }
+}

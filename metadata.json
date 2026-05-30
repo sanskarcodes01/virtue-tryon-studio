@@ -1,0 +1,8 @@
+{
+  "name": "Virtual Try-On",
+  "description": "A production-ready virtual fashion try-on experience with product selection, photo upload, and real-time visualization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
