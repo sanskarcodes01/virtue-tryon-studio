@@ -38,7 +38,7 @@ export const MOCK_PRODUCTS: Product[] = [
     name: 'Onyx Leather Trench',
     category: 'Outwear',
     price: 950,
-    imageUrl: 'https://images.unsplash.com/photo-1520975661595-6453be3f3070?q=80&w=1974&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
     transparentImageUrl: 'https://www.pngall.com/wp-content/uploads/4/Leather-Jacket-PNG-Clipart.png'
   },
   {

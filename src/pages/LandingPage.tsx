@@ -57,7 +57,7 @@ export function LandingPage() {
           className="md:w-2/5 aspect-[3/4] bg-brand-card rounded-sm overflow-hidden relative"
         >
           <img 
-            src="https://images.unsplash.com/photo-1539109132314-d4a8c97e19b0?q=80&w=1974&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" 
             alt="Editorial fashion" 
             className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
