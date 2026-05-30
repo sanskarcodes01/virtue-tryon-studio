@@ -4,7 +4,7 @@ import { MOCK_PRODUCTS } from '../data/mockProducts';
 import { Button } from '../components/Button';
 import { ArrowLeft, Download, RotateCcw, Maximize2, Move } from 'lucide-react';
 import { motion } from 'motion/react';
-import { db, auth } from '../lib/firebase';
+import { db, auth, handleFirestoreError, OperationType } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export function TryOnResult() {
@@ -32,12 +32,15 @@ export function TryOnResult() {
     
     // Save to Firestore Analytics
     if (auth.currentUser) {
-       addDoc(collection(db, 'tryOnResults'), {
+       const path = 'tryOnResults';
+       addDoc(collection(db, path), {
          userId: auth.currentUser.uid,
          productId: selectedProduct.id,
          deviceType: window.innerWidth < 768 ? 'Mobile' : 'Desktop',
          createdAt: serverTimestamp(),
-       }).catch(console.error);
+       }).catch((error) => {
+         handleFirestoreError(error, OperationType.CREATE, path);
+       });
     }
 
     const dataUrl = canvas.toDataURL('image/png');

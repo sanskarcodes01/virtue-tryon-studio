@@ -9,7 +9,7 @@
         "email": { "type": "string", "description": "User email address" },
         "displayName": { "type": "string", "description": "User's full name" },
         "photoURL": { "type": "string", "description": "User profile picture URL" },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Registration timestamp" }
+        "createdAt": { "type": "string", "format": "timestamp", "description": "Registration timestamp" }
       },
       "required": ["uid", "email", "createdAt"]
     },
@@ -38,9 +38,19 @@
         "modelImageUrl": { "type": "string" },
         "resultImageUrl": { "type": "string" },
         "deviceType": { "type": "string", "enum": ["Mobile", "Desktop"] },
-        "createdAt": { "type": "string", "format": "date-time" }
+        "createdAt": { "type": "string", "format": "timestamp" }
       },
-      "required": ["id", "userId", "productId", "createdAt", "deviceType"]
+      "required": ["userId", "productId", "createdAt", "deviceType"]
+    },
+    "Admin": {
+      "title": "Admin Record",
+      "description": "Identifies users with administrative privileges.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["uid", "email"]
     }
   },
   "firestore": {
@@ -55,6 +65,10 @@
     "/tryOnResults/{resultId}": {
       "schema": "TryOnResult",
       "description": "Analytics records for try-on volume."
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Registry of administrators."
     }
   }
 }
