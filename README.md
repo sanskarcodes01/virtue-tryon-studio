@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Virtue Try-On Studio
 
-# Run and deploy your AI Studio app
+A high-fidelity virtual fitting room experience designed for the modern digital era. Virtue uses advanced neural overlays to help users visualize premium fashion on their own silhouettes with precision.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/98acb45b-c682-4391-80bc-295a673df559
+- **Frontend**: React 19 (Vite)
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **Database & Auth**: Firebase (Firestore, Google OAuth)
+- **Analytics**: Recharts
+- **Icons**: Lucide React
 
-## Run Locally
+## Key Features
 
-**Prerequisites:**  Node.js
+- **Neural Overlay Engine**: Real-time 2D fabric draping using HTML5 Canvas and CSS mapping.
+- **Privacy-First Processing**: Image manipulation handled on the client-side edge.
+- **Admin Dashboard**: Comprehensive analytics for usage volume and device distribution.
+- **Responsive Design**: Fully optimized for mobile and desktop environments.
 
+## Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up your environment variables locally (see `.env.example`).
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## License
+
+MIT © 2026 Virtue Aesthetics
