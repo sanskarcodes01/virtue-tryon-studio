@@ -1,12 +1,32 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore, doc, getDocFromServer } from 'firebase/firestore';
-import firebaseConfig from '../../firebase-applet-config.json';
 
+// Environment variables to avoid exposing secrets in JSON files
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+};
+
+// Application URL for consistent handshake logic across environments
+export const APP_URL = import.meta.env.VITE_APP_URL || window.location.origin;
+
+// The user requested to strip hardcoded netlify domains and ensure dynamic origin handling
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+const databaseId = import.meta.env.VITE_FIREBASE_DATABASE_ID || 'ai-studio-98acb45b-c682-4391-80bc-295a673df559';
+export const db = getFirestore(app, databaseId);
 export const auth = getAuth(app);
+
+// Use the current origin for the redirect handshake configuration
 export const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: 'select_account'
+});
 
 async function testConnection() {
   try {
